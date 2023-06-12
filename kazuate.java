@@ -13,19 +13,28 @@ public class kazuate {
         while (guessesLeft > 0) {
             System.out.print("予想を入力してください（残りの予想回数: " + guessesLeft + "）: ");
             int userGuess = scanner.nextInt();
+            if (userGuess < 10 || userGuess > 99){
+                System.out.println("二桁の正の整数を入力してください");
+                guessesLeft += 1;
+            }
+         if (userGuess > 9 && userGuess < 100){
 
             if (userGuess == targetNumber) {
                 System.out.println("当たり！おめでとうございます！");
                 return;
             } else {
                 if (Math.abs(userGuess - targetNumber) >= 20) {
-                    System.out.println("大きすぎるか小さすぎるか、差が20以上あります。");
+                    if (userGuess > targetNumber) {
+                        System.out.println("入力した数は20以上大きいです。");
+                    } else {
+                        System.out.println("入力した数は20以上小さいです。");
+                    }
                 } else if (userGuess > targetNumber) {
-                    System.out.println("入力した数は大きすぎます。");
+                    System.out.println("入力した数は大きいです。");
                 } else {
-                    System.out.println("入力した数は小さすぎます。");
+                    System.out.println("入力した数は小さいです。");
                 }
-            }
+            }}
 
             guessesLeft--;
         }
